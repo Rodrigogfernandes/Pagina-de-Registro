@@ -10,15 +10,6 @@
     "observacoesAdicionais": "asdcaklsnjcblkjahjgdbkxnlsmjfnlzdvcshdalmw,lekfmljsrgnbfnckmxdlfmjcaddgvmcldafmcjdllgvlmd,çxdfkcmdjddvlmc"
   },
   {
-    "id": 1739404406465,
-    "nomePaciente": "RODRIGO 2024",
-    "modalidade": "Ressonancia",
-    "observacoes": "JOELHO DIREITO",
-    "numeroAcesso": "132435657",
-    "dataHoraExame": "2024-02-12T20:52",
-    "nomeTecnico": "RODRIGO"
-  },
-  {
     "id": 1739402302218,
     "nomePaciente": "PACIENTE TESTE",
     "modalidade": "Ressonancia",
@@ -64,26 +55,6 @@
     "dataHoraExame": "2025-02-09T00:06",
     "nomeTecnico": "BENTO",
     "observacoesAdicionais": "zsczasxczaxc"
-  },
-  {
-    "id": 1739063591065,
-    "nomePaciente": "RONNY GUEDES FERNANDES",
-    "modalidade": "Tomografia",
-    "observacoes": "ABDOME",
-    "numeroAcesso": "219828000",
-    "dataHoraExame": "2025-02-08T22:11",
-    "nomeTecnico": "GERMANA",
-    "observacoesAdicionais": "kjbkjb\n"
-  },
-  {
-    "id": 1739062793524,
-    "nomePaciente": "RODRIGO GUEDES GERNANDES",
-    "modalidade": "Raiox",
-    "observacoes": "JOELHO DIREITO",
-    "numeroAcesso": "21011988",
-    "dataHoraExame": "2025-02-08T21:59",
-    "nomeTecnico": "NETO",
-    "observacoesAdicionais": "TESTE\n"
   },
   {
     "id": 1738898478811,

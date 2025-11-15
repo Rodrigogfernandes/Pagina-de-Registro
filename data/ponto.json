@@ -1,47 +1,6 @@
 {
   "funcionarios": [
     {
-      "id": 1,
-      "nome": "RODRIGO GUEDES FERNANDES",
-      "cpf": "08675510462",
-      "valor_hora": 30,
-      "multiplicador_extra": 1,
-      "senha": "1727"
-    },
-    {
-      "id": 2,
-      "nome": "RONNY GUEDES FERNANDES",
-      "cpf": "08227596422",
-      "valor_hora": 30,
-      "multiplicador_extra": 1,
-      "senha": "2101"
-    },
-    {
-      "id": 3,
-      "nome": "GERMANA CARVALHO ",
-      "cpf": "98765987",
-      "valor_hora": 30,
-      "multiplicador_extra": 1,
-      "senha": "1234",
-      "carga_horaria": 5
-    },
-    {
-      "id": 1740074773238,
-      "nome": "NETO FREIRE",
-      "cpf": "7654334",
-      "valor_hora": 30,
-      "multiplicador_extra": 1,
-      "senha": "1234"
-    },
-    {
-      "id": 1740074875659,
-      "nome": "LUZIANA SOUZA",
-      "cpf": "0986598765",
-      "valor_hora": 30,
-      "multiplicador_extra": 30,
-      "senha": "1234"
-    },
-    {
       "id": 1740075745014,
       "nome": "teste",
       "cpf": "123451234",
@@ -52,42 +11,6 @@
     }
   ],
   "registros": [
-    {
-      "id": 1,
-      "funcionario_id": 1,
-      "data": "2025-02-18",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 2,
-      "funcionario_id": 2,
-      "data": "2025-02-19",
-      "turno_manha_entrada": "",
-      "turno_manha_saida": "",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 4,
-      "funcionario_id": 2,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "",
-      "turno_manha_saida": "",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
     {
       "id": 6,
       "funcionario_id": 1740075745014,
@@ -101,130 +24,9 @@
       "valor_diario": 180
     },
     {
-      "id": 7,
-      "funcionario_id": 3,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 11,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 13,
-      "funcionario_id": 3,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "",
-      "turno_manha_saida": "",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740082970098,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740082980649,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "",
-      "turno_manha_saida": "",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740082998863,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 12,
-      "valor_diario": 360
-    },
-    {
-      "id": 1740083093303,
-      "funcionario_id": 1740074875659,
-      "data": "2025-02-19",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740083960523,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740083971817,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "",
-      "turno_manha_saida": "",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1740084002021,
-      "funcionario_id": 1,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "13:00",
-      "turno_tarde_saida": "19:00",
-      "horas_extras": 1,
-      "total_horas_trabalhadas": 13,
-      "valor_diario": 390,
-      "carga_horaria_dia": 8
-    },
-    {
-      "id": 1740161887683,
-      "funcionario_id": 1740074773238,
-      "data": "2025-02-21",
+      "id": 1763168382951,
+      "funcionario_id": 1740075745014,
+      "data": "2025-11-14",
       "turno_manha_entrada": "07:00",
       "turno_manha_saida": "13:00",
       "turno_tarde_entrada": "",
