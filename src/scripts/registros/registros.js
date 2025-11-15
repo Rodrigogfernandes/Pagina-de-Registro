@@ -1130,43 +1130,139 @@ async function exportarGraficoPDF() {
             return;
         }
         
+        // Filtrar registros por modalidade e ano (mesmo filtro usado no gráfico)
+        const registrosFiltrados = (registros || []).filter(registro => {
+            if (!registro || !registro.dataHoraExame) return false;
+            const data = new Date(registro.dataHoraExame);
+            if (isNaN(data.getTime())) return false;
+            
+            const ano = data.getFullYear().toString();
+            const passaAno = ano === anoSelecionado;
+            const passaModalidade = modalidadeSelecionada === 'Tudo' || registro.modalidade === modalidadeSelecionada;
+            
+            return passaAno && passaModalidade;
+        });
+        
+        // Calcular dados do relatório
+        const totalExames = registrosFiltrados.length;
+        const totalPorModalidade = {};
+        const dadosPorMes = {};
+        const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        
+        registrosFiltrados.forEach(registro => {
+            // Por modalidade
+            const modalidade = registro.modalidade || 'Não especificado';
+            totalPorModalidade[modalidade] = (totalPorModalidade[modalidade] || 0) + 1;
+            
+            // Por mês
+            const data = new Date(registro.dataHoraExame);
+            if (!isNaN(data.getTime())) {
+                const mes = data.getMonth();
+                const nomeMes = meses[mes];
+                dadosPorMes[nomeMes] = (dadosPorMes[nomeMes] || 0) + 1;
+            }
+        });
+        
         // Usar jsPDF para criar o PDF
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF('landscape', 'mm', 'a4');
         
-        // Adicionar título
-        pdf.setFontSize(16);
-        pdf.text('Relatório de Exames', 105, 20, { align: 'center' });
+        let yPos = 20; // Posição vertical inicial
         
-        // Adicionar informações
+        // Adicionar título
+        pdf.setFontSize(18);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Relatório de Exames Médicos', 148.5, yPos, { align: 'center' });
+        yPos += 10;
+        
+        // Adicionar informações do filtro
         pdf.setFontSize(12);
-        pdf.text(`Ano: ${anoSelecionado}`, 20, 30);
-        pdf.text(`Modalidade: ${modalidadeSelecionada === 'Tudo' ? 'Todas' : modalidadeSelecionada}`, 20, 37);
+        pdf.setFont(undefined, 'normal');
+        pdf.text(`Ano: ${anoSelecionado}`, 20, yPos);
+        pdf.text(`Modalidade: ${modalidadeSelecionada === 'Tudo' ? 'Todas as Modalidades' : modalidadeSelecionada}`, 20, yPos + 7);
+        yPos += 15;
         
         // Converter canvas para imagem
         const canvas = document.getElementById('barChart');
         const imgData = canvas.toDataURL('image/png');
         
-        // Adicionar imagem ao PDF
-        const imgWidth = 250;
+        // Calcular dimensões da imagem (ajustar para caber bem)
+        const imgWidth = 240;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 20, 45, imgWidth, imgHeight);
         
-        // Adicionar dados do relatório
-        const relatorioContent = document.getElementById('relatorioContent');
-        if (relatorioContent) {
-            const texto = relatorioContent.innerText;
-            const linhas = pdf.splitTextToSize(texto, 250);
-            pdf.text(linhas, 20, 50 + imgHeight + 10);
+        // Adicionar imagem do gráfico ao PDF
+        pdf.addImage(imgData, 'PNG', 20, yPos, imgWidth, imgHeight);
+        yPos += imgHeight + 15;
+        
+        // Adicionar seção de relatório textual
+        pdf.setFontSize(14);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Resumo Estatístico', 20, yPos);
+        yPos += 8;
+        
+        pdf.setFontSize(11);
+        pdf.setFont(undefined, 'normal');
+        
+        // Total de exames
+        pdf.setFont(undefined, 'bold');
+        pdf.text(`Total de Exames: ${totalExames}`, 20, yPos);
+        yPos += 7;
+        
+        // Por modalidade (se filtro = "Tudo")
+        if (modalidadeSelecionada === 'Tudo') {
+            pdf.setFont(undefined, 'bold');
+            pdf.text('Por Modalidade:', 20, yPos);
+            yPos += 7;
+            pdf.setFont(undefined, 'normal');
+            
+            const modalidadesOrdenadas = Object.keys(totalPorModalidade).sort();
+            modalidadesOrdenadas.forEach(modalidade => {
+                const quantidade = totalPorModalidade[modalidade];
+                pdf.text(`  • ${modalidade}: ${quantidade}`, 25, yPos);
+                yPos += 6;
+                
+                // Quebra de página se necessário
+                if (yPos > 180) {
+                    pdf.addPage();
+                    yPos = 20;
+                }
+            });
         }
         
+        // Por mês
+        yPos += 3;
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Por Mês:', 20, yPos);
+        yPos += 7;
+        pdf.setFont(undefined, 'normal');
+        
+        meses.forEach(mes => {
+            const quantidade = dadosPorMes[mes] || 0;
+            pdf.text(`  • ${mes}: ${quantidade}`, 25, yPos);
+            yPos += 6;
+            
+            // Quebra de página se necessário
+            if (yPos > 180) {
+                pdf.addPage();
+                yPos = 20;
+            }
+        });
+        
+        // Adicionar data/hora de geração no rodapé
+        const dataHora = new Date().toLocaleString('pt-BR');
+        pdf.setFontSize(8);
+        pdf.setFont(undefined, 'italic');
+        pdf.text(`Relatório gerado em: ${dataHora}`, 20, 195, { align: 'left' });
+        
         // Salvar PDF
-        const fileName = `relatorio_exames_${anoSelecionado}_${modalidadeSelecionada}.pdf`;
+        const nomeModalidade = modalidadeSelecionada === 'Tudo' ? 'Todas' : modalidadeSelecionada.replace(/\s+/g, '_');
+        const fileName = `relatorio_exames_${anoSelecionado}_${nomeModalidade}.pdf`;
         pdf.save(fileName);
         
     } catch (error) {
         console.error('Erro ao exportar PDF:', error);
-        alert('Erro ao exportar PDF. Verifique se a biblioteca jsPDF está carregada.');
+        alert('Erro ao exportar PDF. Verifique se a biblioteca jsPDF está carregada.\n\nErro: ' + error.message);
     }
 }
 

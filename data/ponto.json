@@ -1,39 +1,8 @@
 {
   "funcionarios": [
-    {
-      "id": 1740075745014,
-      "nome": "teste",
-      "cpf": "123451234",
-      "valor_hora": 30,
-      "multiplicador_extra": 1,
-      "carga_horaria": 5,
-      "senha": "1234"
-    }
+    
   ],
   "registros": [
-    {
-      "id": 6,
-      "funcionario_id": 1740075745014,
-      "data": "2025-02-20",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    },
-    {
-      "id": 1763168382951,
-      "funcionario_id": 1740075745014,
-      "data": "2025-11-14",
-      "turno_manha_entrada": "07:00",
-      "turno_manha_saida": "13:00",
-      "turno_tarde_entrada": "",
-      "turno_tarde_saida": "",
-      "horas_extras": 0,
-      "total_horas_trabalhadas": 6,
-      "valor_diario": 180
-    }
+   
   ]
 }
